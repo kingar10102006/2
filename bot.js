@@ -1,4 +1,4 @@
-const Discord = require('discord.js');
+econst Discord = require('discord.js');
 const devs = ['389090790984515594'];
 const db = require('quick.db');
 const premium = ['470896018603376640']
@@ -27,7 +27,7 @@ const youtube = new YouTube("AIzaSyAdORXg7UZUo7sePv97JyoDqtQVi3Ll0b8");
 const sql = require("sqlite");
 const dateFormat = require('dateformat'); 
 const pretty = require('pretty-ms') 
-const prefix = 'a';
+const prefix = 'e';
 var table = require('table').table
 var ti={}  
 ,spee={}
@@ -35,7 +35,7 @@ var ti={}
 
 client.on('ready', function(){
     var ms = 60000 ;
-    var setGame = ['ahelp','Type ahelp'];
+    var setGame = ['ehelp','Type ehelp'];
     var i = -1;
     var j = 0;
     setInterval(function (){
@@ -3362,166 +3362,4 @@ possibleInvites.push([inviteCount, exec]);
         .addField(':دخولك لديسكورد', `${moment(heg.createdTimestamp).format('YYYY/M/D HH:mm:ss')} **\n** \`${moment(heg.createdTimestamp).fromNow()}\`` ,true)
         .addField(':انضمامك لسيرفنا', `${moment(h.joinedAt).format('YYYY/M/D HH:mm:ss')} \n \`${moment(h.joinedAt).fromNow()}\``, true)
         .setTitle(`__${z.username}__ **Info**`)
-         .addField('عدد الدعوات', `**${Number(inviteCount)}**`, true)
-.setThumbnail(imagemm)
-.setFooter(message.author.username, message.author.avatarURL);
-
-     message.channel.send({embed:heroo});    
-    });
-
-};
-});
- client.on('message', async message => {
-            if(message.content.includes('discord.gg')){ 
-                if(message.member.hasPermission("MANAGE_GUILD")) return;
-        if(!message.channel.guild) return;
-        message.delete()
-          var command = message.content.split(" ")[0];
-    let muterole = message.guild.roles.find(`name`, "muted");
-    if(!muterole){
-      try{
-        muterole = await message.guild.createRole({
-          name: "muted",
-          color: "#000000",
-          permissions:[]
-        })
-        message.guild.channels.forEach(async (channel, id) => {
-          await channel.overwritePermissions(muterole, {
-            SEND_MESSAGES: false,
-            ADD_REACTIONS: false
-          });
-        });
-      }catch(e){
-        console.log(e.stack);
-      }
-    }
-           if(!message.channel.guild) return message.reply('** This command only for servers**');
-     message.member.addRole(muterole);
-    const embed500 = new Discord.RichEmbed()
-      .setTitle("Muted Ads")
-            .addField(`**  You Have Been Muted **` , `**Reason : Sharing Another Discord Link**`)
-            .setColor("c91616")
-            .setThumbnail(`${message.author.avatarURL}`)
-            .setAuthor(message.author.username, message.author.avatarURL)
-        .setFooter(`${message.guild.name} `)
-     message.channel.send(embed500)
-     message.author.send('` انت معاقب ميوت شاتي بسبب نشر سرفرات ان كان عن طريق الخطا من فضلك تكلم مع الادارة `');
-   
-       
-    }
-})
- client.on('message', message => {
-    if(message.content.startsWith(prefix + 'alljoin')) {
-     if (!message.member.hasPermission("MOVE_MEMBERS")) return message.channel.send('**لايوجد لديك صلاحية سحب الأعضاء**');
-       if(!message.guild.member(client.user).hasPermission("MOVE_MEMBERS")) return message.reply("**لايوجد لدي صلاحية السحب**");
-    if (message.member.voiceChannel == null) return message.channel.send(`**الرجاء الدخول لروم صوتي**`)
-     var author = message.member.voiceChannelID;
-     var m = message.guild.members.filter(m=>m.voiceChannel)
-     message.guild.members.filter(m=>m.voiceChannel).forEach(m => {
-     m.setVoiceChannel(author)
-     })
-     message.channel.send(`**تم سحب جميع الأعضاء الي الروم الصوتي حقك.**`)
-
-
-     }
-       });
-client.on('message' , async message => {
-            if(message.content.startsWith(prefix + "ads")) {
-     await message.channel.send("`ارسال الرساله .`").then(e => {
-    let filter = m => m.author.id === message.author.id
-    let tests = '';
-    let time = '';
-    let channel = '';
-    let chaTests = message.channel.awaitMessages(filter, { max: 1, time: 30000, errors: ['time'] })
-    .then(collected => {
-      tests = collected.first().content
-      collected.first().delete()
-e.edit("`تكرار الرساله كل ....... دقائق`")
-let chaTime = message.channel.awaitMessages(filter, { max: 1, time: 30000, errors: ['time'] })
-.then(co => {
-if(isNaN(co.first().content)) return message.reply("`الوقت بالدقائق ! ارقام فقطٍ`");
-if(co.first().content > 1500 || co.first().content < 1) return message.channel.send("`لا اقل من دقيقه ولا اكثر من يوم`")
-  time = co.first().content
-co.first().delete()
-  e.edit("`ادخل اسم الروم`")
-  let chaChannel = message.channel.awaitMessages(filter, { max: 1, time: 30000, errors: ['time'] })
-.then(col => {
-  channel = col.first().content
-col.first().delete()
-  e.edit("`جاري اعداد المعلومات الرجاء الانتظاار...`").then(b => {
-              setTimeout(() => {
-    b.edit(`** تم اعداد المعلومات بنجاح .**`)
-        },2000);
-  })
-  var room = message.guild.channels.find('name' , channel)
-  if(!room) return;
-  if (room) {
-setInterval(() => {
-room.send(tests);
-}, time*60000)
-  }
-})
-})
-})
-        
-})
-}
-});
-client.on('message', message => {
-if(message.content.includes("<@435392018693488641>")) {
-message.channel.startTyping()
-setTimeout(() => { 
-message.channel.stopTyping()
-}, 7000);
-}
-});
-var json = JSON.parse(fs.readFileSync("json.json", "utf8"));
-
-client.on("message", (message) => {
-    var command = message.content.split(" ")[0];
-    command = command.slice(prefix.length);
-    if (!message.content.startsWith(prefix)) return;
-    switch(command) {
-        case "mut" : 
-        
-        if (!message.channel.type =="text") return;
-        if (!message.member.hasPermission("MANAGE_CHANNELS")) return message.reply("**Sorry, You Don't Have `MANAGE_CHANNELS` permission**")
-        if(!message.guild.member(client.user).hasPermission("MANAGE_CHANNELS")) return message.reply("**I Don't Have `MANAGE_CHANNELS` Permission**").then(msg => msg.delete(6000))
-        if (!message.mentions.members.first()) return message.reply("**Mention a user!??**")
-        message.guild.channels.forEach(c => {
-            c.overwritePermissions(message.mentions.members.first().id, {
-                SEND_MESSAGES : false,
-                CONNECT : false
-            })
-        })
-        json[message.guild.id + message.mentions.members.first().id] = {muted : true};
-        fs.writeFile("json.json", JSON.stringify(json), err => {
-            if (err) console.error(err);
-        });
-        message.channel.send(`** <@${message.mentions.members.first().id}> Muted in the server!??**`);
-        break;
-        case "unmut" : 
-        if (!message.channel.type =="text") return;
-        if (!message.member.hasPermission("MANAGE_CHANNELS")) return message.reply("**Sorry, You Don't Have `MANAGE_CHANNELS` permission**")
-        if(!message.guild.member(client.user).hasPermission("MANAGE_CHANNELS")) return message.reply("**I Don't Have `MANAGE_CHANNELS` Permission**").then(msg => msg.delete(10000))
-        if (!message.mentions.members.first()) return message.reply("**Mention a user!??**")
-        if (!message.mentions.members.first()) return;
-        message.guild.channels.forEach(c => {
-            c.overwritePermissions(message.mentions.members.first().id, {
-                SEND_MESSAGES : null,
-                CONNECT : null
-            })
-        })
-        json[message.guild.id + message.mentions.members.first().id] = {muted : false};
-        fs.writeFile("json.json", JSON.stringify(json), err => {
-            if (err) console.error(err);
-        });
-        message.channel.send(`** <@${message.mentions.members.first().id}> Unmuted!??**`);
-    }
-})
-client.on('guildMemberAdd', member => {
-    member.createDM().then(function (channel) {
-return channel.send("")
-    }
-    )});
-client.login(process.env.BOT_TOKEN)
+         .addField('عدد الدعوات', `**${Number
